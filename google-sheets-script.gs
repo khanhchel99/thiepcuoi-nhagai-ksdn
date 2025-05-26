@@ -16,11 +16,9 @@ function doPost(e) {
     
     // Extract form data from the POST request
     var name = e.parameter.name;
-    var phone = e.parameter.phone;
-    var countryCode = e.parameter.countryCode;
+    var relationship = e.parameter.relationship;
     var guests = e.parameter.guests;
     var companions = e.parameter.companions;
-    var fullPhone = countryCode + phone;
     
     // Add a timestamp for when the RSVP was submitted
     var timestamp = new Date();
@@ -29,7 +27,7 @@ function doPost(e) {
     sheet.appendRow([
       timestamp,
       name,
-      fullPhone,
+      relationship,
       guests,
       companions
     ]);
