@@ -994,10 +994,10 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Số lượng người đi cùng (bao gồm cả bạn):</label>
+                        <label class="form-label">Số lượng người đi cùng:</label>
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <button type="button" id="decrement" class="btn" style="padding: 6px 16px; min-width: 36px;">-</button>
-                            <input type="number" id="guests" name="guests" class="form-input" min="1" max="6" value="1" style="width: 60px; text-align: center;" required readonly>
+                            <input type="number" id="guests" name="guests" class="form-input" min="0" max="10" value="0" style="width: 60px; text-align: center;" required readonly>
                             <button type="button" id="increment" class="btn" style="padding: 6px 16px; min-width: 36px;">+</button>
                         </div>
                     </div>
@@ -1093,7 +1093,7 @@
                 if(data.result === 'success') {
                     formStatus.innerHTML = '<p style="color: green;">Cảm ơn bạn đã xác nhận tham dự!</p>';
                     this.reset();
-                    document.getElementById('guests').value = 1; // Reset guests to 1
+                    document.getElementById('guests').value = 0; // Reset guests to 1
                 } else {
                     formStatus.innerHTML = '<p style="color: red;">Có lỗi xảy ra. Vui lòng thử lại sau.</p>';
                     console.error('Error:', data.error);
@@ -1109,11 +1109,11 @@
         const guestsInput = document.getElementById('guests');
         document.getElementById('increment').onclick = function() {
             let val = parseInt(guestsInput.value, 10);
-            if (val < 6) guestsInput.value = val + 1;
+            if (val < 10) guestsInput.value = val + 1;
         };
         document.getElementById('decrement').onclick = function() {
             let val = parseInt(guestsInput.value, 10);
-            if (val > 1) guestsInput.value = val - 1;
+            if (val > 0) guestsInput.value = val - 1;
         };
 
         // Animation when scrolling
