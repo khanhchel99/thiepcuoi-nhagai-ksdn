@@ -927,48 +927,6 @@
           </div>
       </section>
 
-        <section class="hero">
-            <div class="hero-content">
-                <h2>We're getting married</h2>
-                <h1 class="names-heading">
-                    <span class="name">Văn Khánh</span>
-                    <span class="ampersand">&</span>
-                    <span class="name">Hoàng Anh</span>
-                </h1>
-                <p class="date">11 - 07 - 2025</p>
-                
-                <div class="countdown">
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="days">00</span>
-                        <span class="countdown-label">Days</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="hours">00</span>
-                        <span class="countdown-label">Hours</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="minutes">00</span>
-                        <span class="countdown-label">Minutes</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="seconds">00</span>
-                        <span class="countdown-label">Seconds</span>
-                    </div>
-                </div>
-                
-                <div class="hero-buttons">
-                    <a href="#rsvp" class="hero-button">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Xác nhận tham dự</span>
-                    </a>
-                    <a href="#gift" class="hero-button">
-                        <i class="fas fa-gift"></i>
-                        <span>Tặng quà</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-        
         <section class="section couple" id="couple">
             <img src="images/hy.png" alt="Hy" class="hy" id="hy">
             <div class="couple-info">
@@ -1025,18 +983,15 @@
                         <input type="text" id="name" name="name" class="form-input" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone" class="form-label">Số điện thoại:</label>
-                        <div style="display: flex; align-items: center; gap: 8px;">
-                            <select id="countryCode" name="countryCode" style="height: 48px; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; padding: 0 10px;">
-                                <option value="+84" selected>🇻🇳 +84</option>
-                                <option value="+1">🇺🇸 +1</option>
-                                <option value="+61">🇦🇺 +61</option>
-                                <option value="+81">🇯🇵 +81</option>
-                                <option value="+65">🇸🇬 +65</option>
-                                <!-- Add more as needed -->
-                            </select>
-                            <input id="phone" name="phone" type="tel" class="form-input" style="flex:1;" required placeholder="Số điện thoại">
-                        </div>
+                        <label for="relationship" class="form-label">Bạn là:</label>
+                        <select id="relationship" name="relationship" class="form-select" required>
+                            <option value="" disabled selected>-- Chọn mối quan hệ --</option>
+                            <option value="Họ hàng">Họ hàng</option>
+                            <option value="Bạn của gia đình">Bạn của gia đình</option>
+                            <option value="Bạn của cô dâu, chú rể">Bạn của cô dâu, chú rể</option>
+                            <option value="Đồng nghiệp của bố mẹ">Đồng nghiệp của bố mẹ</option>
+                            <option value="Đồng nghiệp của cô dâu, chú rể">Đồng nghiệp của cô dâu, chú rể</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Số lượng người đi cùng (bao gồm cả bạn):</label>
@@ -1061,7 +1016,7 @@
         <section class="section gift" id="gift">  
           <h2>Hộp mừng cưới</h2>
           <div class="gift-info">
-              <p>Nếu có thể, gia đình rất mong các bạn có thể đến dự và chung vui cùng gia đình, nhưng nếu bạn bận và muốn tặng quà cho cô dâu chú rể, bạn có thể tặng ở đây</p>
+              <p>Cảm ơn những tình cảm đong đầy của mọi người </p>
               
               <div class="gift-box-container">
                   <div class="gift-box" id="giftBox">
@@ -1107,33 +1062,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.1.1/js/intlTelInput.min.js"></script>
     <script>
-        // Countdown timer
-        function updateCountdown() {
-            const weddingDate = new Date('July 11, 2025 11:00:00').getTime();
-            const now = new Date().getTime();
-            const timeLeft = weddingDate - now;
-            
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
-            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
-            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
-            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
-            
-            if (timeLeft < 0) {
-                clearInterval(countdownTimer);
-                document.getElementById('days').innerText = '00';
-                document.getElementById('hours').innerText = '00';
-                document.getElementById('minutes').innerText = '00';
-                document.getElementById('seconds').innerText = '00';
-            }
-        }
-        
-        const countdownTimer = setInterval(updateCountdown, 1000);
-        updateCountdown();
+        // Countdown timer removed as it's no longer needed
         
         // RSVP Form Submission to Google Sheets
         document.getElementById('rsvpForm').addEventListener('submit', function(e) {
@@ -1142,8 +1071,7 @@
             // Get form data
             const formData = new FormData(this);
             const name = formData.get('name');
-            const phone = formData.get('phone');
-            const countryCode = formData.get('countryCode');
+            const relationship = formData.get('relationship');
             const guests = formData.get('guests');
             const companions = formData.get('companions');
             
